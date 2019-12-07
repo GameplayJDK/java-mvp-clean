@@ -63,6 +63,10 @@ public class UseCaseHandler {
         this.useCaseScheduler.notifyError(errorResponseValue, useCaseCallback);
     }
 
+    public void shutdown() {
+        this.useCaseScheduler.shutdown();
+    }
+
     private static class UiCallbackWrapper<V extends UseCaseAbstract.ResponseValueInterface, W extends UseCaseAbstract.ErrorResponseValueInterface> implements UseCaseAbstract.UseCaseCallbackInterface<V, W> {
 
         private final UseCaseAbstract.UseCaseCallbackInterface<V, W> useCaseCallback;

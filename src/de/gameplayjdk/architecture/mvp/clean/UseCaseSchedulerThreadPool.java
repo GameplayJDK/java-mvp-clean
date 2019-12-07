@@ -51,12 +51,12 @@ public class UseCaseSchedulerThreadPool implements UseCaseSchedulerInterface {
     }
 
     @Override
-    public <V extends UseCaseAbstract.ResponseValue, W extends UseCaseAbstract.ErrorResponseValue> void notifyResponse(final V responseValue, final UseCaseAbstract.UseCaseCallback<V, W> useCaseCallback) {
+    public <V extends UseCaseAbstract.ResponseValueInterface, W extends UseCaseAbstract.ErrorResponseValueInterface> void notifyResponse(final V responseValue, final UseCaseAbstract.UseCaseCallbackInterface<V, W> useCaseCallback) {
         this.handler.post(() -> useCaseCallback.onSuccess(responseValue));
     }
 
     @Override
-    public <V extends UseCaseAbstract.ResponseValue, W extends UseCaseAbstract.ErrorResponseValue> void notifyError(final W errorResponseValue, final UseCaseAbstract.UseCaseCallback<V, W> useCaseCallback) {
+    public <V extends UseCaseAbstract.ResponseValueInterface, W extends UseCaseAbstract.ErrorResponseValueInterface> void notifyError(final W errorResponseValue, final UseCaseAbstract.UseCaseCallbackInterface<V, W> useCaseCallback) {
         this.handler.post(() -> useCaseCallback.onError(errorResponseValue));
     }
 }

@@ -18,11 +18,11 @@
 
 package de.gameplayjdk.architecture.mvp.clean;
 
-public abstract class UseCaseAbstract<P extends UseCaseAbstract.RequestValue, Q extends UseCaseAbstract.ResponseValue, R extends UseCaseAbstract.ErrorResponseValue> {
+public abstract class UseCaseAbstract<P extends UseCaseAbstract.RequestValueInterface, Q extends UseCaseAbstract.ResponseValueInterface, R extends UseCaseAbstract.ErrorResponseValueInterface> {
 
     private P requestValue;
 
-    private UseCaseCallback<Q, R> useCaseCallback;
+    private UseCaseCallbackInterface<Q, R> useCaseCallback;
 
     public UseCaseAbstract() {
     }
@@ -41,24 +41,24 @@ public abstract class UseCaseAbstract<P extends UseCaseAbstract.RequestValue, Q 
         this.requestValue = requestValue;
     }
 
-    public UseCaseCallback<Q, R> getUseCaseCallback() {
+    public UseCaseCallbackInterface<Q, R> getUseCaseCallback() {
         return this.useCaseCallback;
     }
 
-    public void setUseCaseCallback(UseCaseCallback<Q, R> useCaseCallback) {
+    public void setUseCaseCallback(UseCaseCallbackInterface<Q, R> useCaseCallback) {
         this.useCaseCallback = useCaseCallback;
     }
 
-    public interface RequestValue {
+    public interface RequestValueInterface {
     }
 
-    public interface ResponseValue {
+    public interface ResponseValueInterface {
     }
 
-    public interface ErrorResponseValue {
+    public interface ErrorResponseValueInterface {
     }
 
-    public static interface UseCaseCallback<Q, R> {
+    public static interface UseCaseCallbackInterface<Q, R> {
 
         void onSuccess(Q response);
 

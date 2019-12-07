@@ -59,4 +59,9 @@ public class UseCaseSchedulerThreadPool implements UseCaseSchedulerInterface {
     public <V extends UseCaseAbstract.ResponseValueInterface, W extends UseCaseAbstract.ErrorResponseValueInterface> void notifyError(final W errorResponseValue, final UseCaseAbstract.UseCaseCallbackInterface<V, W> useCaseCallback) {
         this.handler.post(() -> useCaseCallback.onError(errorResponseValue));
     }
+
+    @Override
+    public void shutdown() {
+        this.threadPoolExecutor.shutdownNow();
+    }
 }
